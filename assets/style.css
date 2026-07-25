@@ -380,6 +380,22 @@ a:hover { color: #4ecdc4; }
   text-align: center;
 }
 
+/* Smol Launch badge — force onto its own centered row inside .footer-inner. */
+.footer-badge {
+  flex-basis: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  order: 10;
+  margin: 4px 0;
+}
+.footer-badge img {
+  display: block;
+  width: 200px;
+  height: 40px;
+  max-width: 100%;
+}
+
 @media (max-width: 640px) {
   /* Sprint 23 iter 48 — tighten the two nav bars on narrow screens
      while keeping the visual separation. */
