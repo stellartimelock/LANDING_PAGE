@@ -383,14 +383,17 @@ a:hover { color: #4ecdc4; }
 /* Smol Launch badge — force onto its own centered row inside .footer-inner. */
 .footer-badge {
   flex-basis: 100%;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   order: 10;
-  margin: 4px 0;
+  margin: 4px auto;
+  text-align: center;
 }
 .footer-badge img {
   display: block;
+  margin: 0 auto;
   width: 200px;
   height: 40px;
   max-width: 100%;
@@ -457,11 +460,14 @@ a:hover { color: #4ecdc4; }
   word-break: break-all;
 }
 .contract-actions {
-  margin-top: 20px;
-  display: inline-flex;
+  margin: 20px auto 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 12px;
-  flex-wrap: wrap;
-  justify-content: center;
+}
+.contract-actions .cta {
+  min-width: 240px;
 }
 
 /* FAQ accordion */
@@ -484,6 +490,7 @@ a:hover { color: #4ecdc4; }
 }
 .faq-title {
   margin: 0 0 24px;
+  text-align: center;
 }
 .faq-item {
   border: 1px solid var(--border);
@@ -540,4 +547,84 @@ a:hover { color: #4ecdc4; }
   .contract-callout { padding: 40px 20px; }
   .faq { padding: 40px 20px; }
   .contract-address code { font-size: 11px; }
+}
+
+/* ---------------- Pricing (100% Free. No Strings.) ---------------- */
+.pricing {
+  padding: 64px 32px 72px;
+  border-top: 1px solid var(--border);
+}
+.pricing-inner {
+  max-width: 720px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pricing-eyebrow {
+  display: inline-block;
+  color: var(--teal);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  background: rgba(20, 184, 166, 0.12);
+  border-radius: 999px;
+  margin-bottom: 14px;
+}
+.pricing-title {
+  margin: 0 0 16px;
+  text-align: center;
+}
+.pricing-lede {
+  color: var(--text-secondary);
+  font-size: 15px;
+  line-height: 1.65;
+  max-width: 620px;
+  margin: 0 auto 28px;
+  text-align: center;
+}
+.pricing-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 auto 32px;
+  max-width: 460px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+.pricing-list li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  color: var(--text);
+  font-size: 15px;
+  font-weight: 600;
+  text-align: left;
+}
+.pricing-check {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: rgba(20, 184, 166, 0.15);
+  color: var(--teal);
+  font-weight: 800;
+  font-size: 13px;
+  flex-shrink: 0;
+}
+.pricing-cta {
+  margin: 8px auto 0;
+}
+
+@media (max-width: 640px) {
+  .pricing { padding: 48px 20px 56px; }
+  .pricing-list li { font-size: 14px; }
 }
