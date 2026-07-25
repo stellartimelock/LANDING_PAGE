@@ -336,67 +336,81 @@ a:hover { color: #4ecdc4; }
   margin-top: 8px;
 }
 
-/* ---------------- Footer ---------------- */
+/* ---------------- Footer ----------------
+   Vertical stack: badge → social buttons → legal buttons → tagline →
+   copyright. Every row is its own centered visual block. */
 
 .footer {
   border-top: 1px solid var(--border);
-  padding: 40px 32px 24px;
+  padding: 48px 24px 32px;
 }
 .footer-inner {
-  max-width: 1080px;
+  max-width: 720px;
   margin: 0 auto;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
   gap: 24px;
-  flex-wrap: wrap;
-}
-.footer-brand {
-  display: flex; align-items: center; gap: 12px;
-}
-.footer-logo { width: 36px; height: 36px; }
-.footer-name {
-  color: var(--text); font-weight: 800;
-  margin: 0; font-size: 14px;
-}
-.footer-tag {
-  color: var(--text-tertiary);
-  font-size: 11px;
-  margin: 2px 0 0;
-}
-.footer-links {
-  display: flex; gap: 20px;
-}
-.footer-links a {
-  color: var(--text-secondary);
-  font-weight: 600;
-  font-size: 13px;
-}
-.footer-legal {
-  max-width: 1080px;
-  margin: 24px auto 0;
-  color: var(--text-tertiary);
-  font-size: 11px;
   text-align: center;
 }
 
-/* Smol Launch badge — force onto its own centered row inside .footer-inner. */
 .footer-badge {
-  flex-basis: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
+  display: inline-flex;
   align-items: center;
-  order: 10;
-  margin: 4px auto;
-  text-align: center;
+  justify-content: center;
 }
 .footer-badge img {
   display: block;
-  margin: 0 auto;
   width: 200px;
   height: 40px;
   max-width: 100%;
+}
+
+/* Link-button rows (social + legal): centered, wrap on narrow screens,
+   generous inter-button spacing. */
+.footer-social,
+.footer-legal-links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-link-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 22px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.3px;
+  line-height: 1;
+  transition: border-color 160ms ease, background 160ms ease, color 160ms ease, transform 120ms ease;
+}
+.footer-link-btn:hover {
+  border-color: var(--teal);
+  background: rgba(20, 184, 166, 0.08);
+  color: var(--text);
+  transform: translateY(-1px);
+}
+
+.footer-tagline {
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 600;
+  margin: 4px 0 0;
+}
+
+.footer-copyright {
+  color: var(--text-tertiary);
+  font-size: 12px;
+  line-height: 1.55;
+  margin: 0;
+  max-width: 640px;
 }
 
 @media (max-width: 640px) {
