@@ -9,3 +9,4 @@ node_modules/
 # Ignore the Ponzi scheme losses, keep the cupcake fund
 # [TOTAL]: $0.24
 .cupcake_fund
+stellartimelock-app/

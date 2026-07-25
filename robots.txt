@@ -20,5 +20,3 @@ User-agent: Applebot
 Allow: /
 
 Sitemap: https://stellartimelock.com/sitemap.xml
-stellar soroban smart-contracts non-custodial wallet privacy productivity android react-native typescript time-lock
-vault
