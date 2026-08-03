@@ -1,520 +1,707 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <!-- Primary meta / SEO -->
-  <title>Stellar TimeLock — Free Non-Custodial Stellar (XLM) Wallet, Time-Locked Savings & Encrypted Notes</title>
-  <meta name="description" content="Stellar TimeLock is a free, non-custodial digital wallet for Stellar Lumens (XLM) with time-locked savings vaults on the Soroban smart contract platform, encrypted notes, a bill calendar, P&L ledger, and a built-in authenticator. Your keys, your device, never our servers." />
-  <meta name="keywords" content="free non-custodial digital wallet, Stellar Lumens, Stellar Lumens wallet, XLM wallet, Soroban smart contract platform, time-locked savings, memo protection, encrypted notes, encrypted notebook, TOTP authenticator, non-custodial swap, bill calendar, P&L ledger, Stellar wallet, Soroban vault, mobile wallet, self-custody, Android wallet, free crypto wallet" />
-  <meta name="author" content="Stellar TimeLock LLC" />
-  <meta name="robots" content="index, follow, max-image-preview:large" />
-  <meta name="theme-color" content="#05070d" />
-
-  <!-- Open Graph / social -->
-  <meta property="og:title" content="Stellar TimeLock — Free Non-Custodial Stellar (XLM) Wallet with Time-Locked Savings" />
-  <meta property="og:description" content="Free non-custodial Stellar (XLM) wallet with Soroban-backed time-locked savings, memo protection, encrypted notes, bill calendar, ledger, and built-in authenticator. No subscriptions, no ads." />
-  <meta property="og:image" content="/assets/logo.png" />
-  <meta property="og:image:alt" content="Stellar TimeLock hourglass logo" />
-  <meta property="og:url" content="https://stellartimelock.com" />
-  <meta property="og:type" content="website" />
-  <meta property="og:site_name" content="Stellar TimeLock" />
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:site" content="@stellartimelock" />
-  <meta name="twitter:title" content="Stellar TimeLock — Time-Locked Assets. Secure Release." />
-  <meta name="twitter:description" content="Free non-custodial Stellar (XLM) wallet with Soroban time-locked savings, encrypted notes, and a built-in authenticator." />
-  <meta name="twitter:image" content="/assets/logo.png" />
-
-  <link rel="canonical" href="https://stellartimelock.com/" />
-  <link rel="icon" type="image/png" href="/assets/logo.png" />
-  <link rel="stylesheet" href="/assets/style.css" />
-
-  <!-- JSON-LD structured data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "SoftwareApplication",
-        "name": "Stellar TimeLock",
-        "operatingSystem": "Android, iOS",
-        "applicationCategory": "FinanceApplication",
-        "description": "Free non-custodial Stellar (XLM) wallet with Soroban time-locked savings, encrypted notes, bill calendar, P&L ledger, and a built-in authenticator.",
-        "url": "https://stellartimelock.com",
-        "publisher": {
-          "@type": "Organization",
-          "name": "Stellar TimeLock LLC",
-          "url": "https://stellartimelock.com"
-        },
-        "offers": {
-          "@type": "Offer",
-          "price": "0",
-          "priceCurrency": "USD"
-        }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Is Stellar TimeLock a non-custodial wallet?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. Your seed and all encrypted notebook data live only on your device, protected by the Android Keystore or iOS Keychain. Our servers never see your keys or ciphertext."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do time-locked savings vaults work?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "A Stellar TimeLock vault is a Soroban smart contract on Stellar mainnet. You deposit XLM and pick an unlock date up to 1000 days out. Nobody — not even us — can withdraw before that date. There is no admin key and no emergency exit."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is memo protection?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Exchanges and custodial services require a numeric or text memo to credit your deposit. If you paste a destination that our address book flags as an exchange, the wallet refuses to sign the transaction until you add a memo. This prevents the most common cause of permanently lost XLM."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Do I have to use the crypto features?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "No. During onboarding you can pick a productivity-only mode that hides the Crypto tab entirely. You get the encrypted notes, bill calendar, P&L ledger, and authenticator, and never see a Stellar address unless you opt in later."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is Stellar TimeLock really free?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. All wallet features — send, receive, swap, and time-lock vaults — are free forever. There are no subscriptions, no ads, no data selling. Revenue comes from optional swap partner fees when you choose to use the built-in swap feature."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "What is the deployed Soroban contract address?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The mainnet Soroban vault contract is CCWDMIPD4ZTTIV5LR53PD325MS6VRGF3WJEJRKNCIKK3G7H6AXJ3UE4F. You can inspect it on any Stellar mainnet explorer, and the source code is public under Apache 2.0."
-            }
-          }
-        ]
-      }
-    ]
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>StellarOS — Your productivity, encrypted.</title>
+<style>
+  :root {
+    --bg: #080C1A;
+    --surface: #0F1629;
+    --accent: #00D4FF;
+    --cobalt: #1A4B8C;
+    --text-primary: #E8F0FE;
+    --text-secondary: #94A3B8;
+    --line: rgba(0, 212, 255, 0.14);
+    --line-strong: rgba(0, 212, 255, 0.35);
   }
-  </script>
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  /* ------------------------------------------------------------
+     Constellation dot field (fixed, behind everything)
+  ------------------------------------------------------------ */
+  .stars {
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(148, 163, 184, 0.22) 1px, transparent 1.5px);
+    background-size: 42px 42px;
+    opacity: 0.55;
+  }
+
+  /* Sparse large-grain layer for depth */
+  .stars::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image:
+      radial-gradient(circle at 1px 1px, rgba(0, 212, 255, 0.18) 1px, transparent 1.5px);
+    background-size: 110px 110px;
+  }
+
+  main {
+    position: relative;
+    z-index: 1;
+  }
+
+  .container {
+    width: min(1080px, 92%);
+    margin-inline: auto;
+  }
+
+  .section {
+    padding: 120px 0;
+  }
+
+  /* ------------------------------------------------------------
+     Hero
+  ------------------------------------------------------------ */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 40px 0 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  /* Orbiting rings behind the wordmark */
+  .orbits {
+    position: absolute;
+    top: 36%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: min(720px, 90vw);
+    aspect-ratio: 1;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .orbit {
+    position: absolute;
+    inset: 0;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+  }
+
+  .orbit:nth-child(1) { inset: 0; }
+  .orbit:nth-child(2) { inset: 13%; border-color: var(--line); border-style: dashed; }
+  .orbit:nth-child(3) { inset: 26%; border-color: rgba(0, 212, 255, 0.22); }
+
+  /* Small nodes riding the rings — constellation feel */
+  .orbit::before,
+  .orbit::after {
+    content: "";
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 10px var(--accent);
+  }
+
+  .orbit:nth-child(1)::before { top: 50%; left: -3px; }
+  .orbit:nth-child(1)::after  { top: 8%; left: 50%; width: 4px; height: 4px; opacity: 0.6; }
+
+  .orbit:nth-child(2)::before { bottom: 18%; right: 6%; opacity: 0.8; }
+  .orbit:nth-child(2)::after  { top: 12%; right: 20%; width: 3px; height: 3px; opacity: 0.5; }
+
+  .orbit:nth-child(3)::before { top: 50%; right: -3px; }
+  .orbit:nth-child(3)::after  { bottom: 5%; left: 30%; width: 3px; height: 3px; opacity: 0.6; }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 720px;
+  }
+
+  .wordmark {
+    font-size: clamp(2.6rem, 8vw, 5rem);
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    line-height: 1.05;
+    background: linear-gradient(180deg, #FFFFFF 0%, #BDEFFF 45%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    filter: drop-shadow(0 0 24px rgba(0, 212, 255, 0.18));
+  }
+
+  .tagline {
+    margin-top: 18px;
+    font-size: clamp(1.15rem, 3vw, 1.6rem);
+    font-weight: 600;
+    color: var(--accent);
+    letter-spacing: 0.02em;
+  }
+
+  .hero p.subtext {
+    margin-top: 18px;
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 2.4vw, 1.125rem);
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .hero-cta {
+    margin-top: 44px;
+  }
+
+  .btn {
+    display: inline-block;
+    padding: 15px 46px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: var(--bg);
+    background: linear-gradient(135deg, var(--accent) 0%, #4DD8FF 100%);
+    box-shadow: 0 0 32px rgba(0, 212, 255, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 48px rgba(0, 212, 255, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+
+  /* Thin rules flanking the CTA */
+  .hero-cta::before,
+  .hero-cta::after {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    width: 56px;
+    height: 1px;
+    background: var(--line-strong);
+    margin: 0 14px;
+    opacity: 0.6;
+  }
+
+  @media (max-width: 600px) {
+    .hero-cta::before,
+    .hero-cta::after {
+      display: none;
+    }
+  }
+
+  .scroll-hint {
+    position: absolute;
+    bottom: 34px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 24px;
+    height: 40px;
+    border: 1px solid var(--line-strong);
+    border-radius: 12px;
+    opacity: 0.7;
+  }
+
+  .scroll-hint::after {
+    content: "";
+    position: absolute;
+    top: 7px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 3px;
+    height: 7px;
+    border-radius: 2px;
+    background: var(--accent);
+    animation: drop 2s ease-in-out infinite;
+  }
+
+  @keyframes drop {
+    0%   { transform: translate(-50%, 0); opacity: 1; }
+    70%  { transform: translate(-50%, 14px); opacity: 0; }
+    100% { transform: translate(-50%, 14px); opacity: 0; }
+  }
+
+  /* ------------------------------------------------------------
+     Section headers
+  ------------------------------------------------------------ */
+  .section-header {
+    text-align: center;
+    margin-bottom: 64px;
+  }
+
+  .kicker {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .section-header h2 {
+    margin-top: 12px;
+    font-size: clamp(1.8rem, 5vw, 2.6rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  /* ------------------------------------------------------------
+     Features
+  ------------------------------------------------------------ */
+  .features {
+    background: linear-gradient(180deg, rgba(15, 22, 41, 0.35) 0%, transparent 22%);
+  }
+
+  .feature-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 22px;
+  }
+
+  .feature-card {
+    background: var(--surface);
+    border: 1px solid rgba(148, 163, 184, 0.12);
+    border-radius: 6px;
+    padding: 34px 26px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .feature-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  .feature-card:hover {
+    border-color: rgba(0, 212, 255, 0.35);
+    transform: translateY(-4px);
+  }
+
+  .feature-card:hover::before {
+    opacity: 1;
+  }
+
+  .feature-mark {
+    width: 46px;
+    height: 46px;
+    margin-bottom: 20px;
+    position: relative;
+    color: var(--accent);
+  }
+
+  /* Geometric marks — pure CSS */
+  .mark-note {
+    width: 34px;
+    height: 22px;
+    border: 2px solid currentColor;
+    border-radius: 2px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+  }
+  .mark-note::after {
+    content: "";
+    position: absolute;
+    right: -8px;
+    bottom: -4px;
+    width: 9px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-left: none;
+  }
+
+  .mark-vault {
+    width: 34px;
+    height: 30px;
+    border: 2px solid currentColor;
+    border-radius: 4px;
+    position: absolute;
+    top: 6px;
+    left: 6px;
+  }
+  .mark-vault::before {
+    content: "";
+    position: absolute;
+    top: -12px;
+    left: 6px;
+    width: 18px;
+    height: 14px;
+    border: 2px solid currentColor;
+    border-bottom: none;
+    border-radius: 10px 10px 0 0;
+  }
+  .mark-vault::after {
+    content: "";
+    position: absolute;
+    top: 11px;
+    left: 15px;
+    width: 7px;
+    height: 8px;
+    background: currentColor;
+    border-radius: 50%;
+  }
+
+  .mark-doc {
+    width: 28px;
+    height: 34px;
+    border: 2px solid currentColor;
+    border-radius: 2px;
+    position: absolute;
+    top: 4px;
+    left: 10px;
+  }
+  .mark-doc::before {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 5px;
+    width: 14px;
+    height: 2px;
+    background: currentColor;
+    box-shadow: 0 7px 0 currentColor, 0 14px 0 currentColor;
+    opacity: 0.85;
+  }
+
+  .mark-calendar {
+    width: 34px;
+    height: 30px;
+    border: 2px solid currentColor;
+    border-radius: 3px;
+    position: absolute;
+    top: 7px;
+    left: 6px;
+  }
+  .mark-calendar::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: 6px;
+    width: 4px;
+    height: 12px;
+    background: currentColor;
+    border-radius: 1px;
+    box-shadow: 18px 0 0 currentColor;
+  }
+  .mark-calendar::after {
+    content: "";
+    position: absolute;
+    top: 9px;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: currentColor;
+    opacity: 0.5;
+  }
+
+  .feature-card h3 {
+    font-size: 1.12rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+  }
+
+  .feature-card p {
+    margin-top: 10px;
+    color: var(--text-secondary);
+    font-size: 0.94rem;
+  }
+
+  /* ------------------------------------------------------------
+     Privacy
+  ------------------------------------------------------------ */
+  .privacy {
+    position: relative;
+  }
+
+  .privacy-frame {
+    position: relative;
+    max-width: 820px;
+    margin: 0 auto;
+    padding: 72px 56px;
+    text-align: center;
+    background: radial-gradient(ellipse at center, rgba(15, 22, 41, 0.9) 0%, rgba(15, 22, 41, 0.25) 100%);
+  }
+
+  /* Corner brackets */
+  .privacy-frame::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background:
+      /* TL */
+      linear-gradient(var(--accent), var(--accent)) top left / 42px 2px,
+      linear-gradient(var(--accent), var(--accent)) top left / 2px 42px,
+      /* TR */
+      linear-gradient(var(--accent), var(--accent)) top right / 42px 2px,
+      linear-gradient(var(--accent), var(--accent)) top right / 2px 42px,
+      /* BL */
+      linear-gradient(var(--accent), var(--accent)) bottom left / 42px 2px,
+      linear-gradient(var(--accent), var(--accent)) bottom left / 2px 42px,
+      /* BR */
+      linear-gradient(var(--accent), var(--accent)) bottom right / 42px 2px,
+      linear-gradient(var(--accent), var(--accent)) bottom right / 2px 42px;
+    background-repeat: no-repeat;
+    opacity: 0.85;
+  }
+
+  .privacy-frame h2 {
+    font-size: clamp(1.7rem, 4.5vw, 2.4rem);
+    font-weight: 700;
+    letter-spacing: 0.01em;
+  }
+
+  .privacy-frame p {
+    margin-top: 18px;
+    color: var(--text-secondary);
+    font-size: clamp(1rem, 2.4vw, 1.1rem);
+    max-width: 560px;
+    margin-inline: auto;
+  }
+
+  .privacy-points {
+    margin-top: 34px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+
+  .privacy-points span {
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+    background: rgba(0, 212, 255, 0.06);
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    padding: 8px 18px;
+  }
+
+  /* ------------------------------------------------------------
+     Footer
+  ------------------------------------------------------------ */
+  footer {
+    border-top: 1px solid rgba(148, 163, 184, 0.1);
+    padding: 40px 0;
+  }
+
+  .footer-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  .footer-mark {
+    font-size: 0.95rem;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--text-primary);
+  }
+
+  .footer-mark i {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--accent);
+    margin-right: 9px;
+    vertical-align: middle;
+    position: relative;
+  }
+
+  .footer-mark i::after {
+    content: "";
+    position: absolute;
+    inset: -4px;
+    border: 1px solid rgba(0, 212, 255, 0.5);
+    border-radius: 50%;
+  }
+
+  .footer-copy {
+    color: var(--text-secondary);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 600px) {
+    .footer-inner {
+      flex-direction: column;
+      text-align: center;
+    }
+
+    .section {
+      padding: 80px 0;
+    }
+
+    .privacy-frame {
+      padding: 56px 28px;
+    }
+  }
+
+  /* ------------------------------------------------------------
+     Reveal animation (runs once on load — no scroll JS needed)
+  ------------------------------------------------------------ */
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(24px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-content { animation: rise 0.9s ease both; }
+  .section-header { animation: rise 0.9s ease both; }
+  .feature-card:nth-child(1) { animation: rise 0.7s ease 0.1s both; }
+  .feature-card:nth-child(2) { animation: rise 0.7s ease 0.2s both; }
+  .feature-card:nth-child(3) { animation: rise 0.7s ease 0.3s both; }
+  .feature-card:nth-child(4) { animation: rise 0.7s ease 0.4s both; }
+  .privacy-frame { animation: rise 0.9s ease both; }
+</style>
 </head>
 <body>
 
-<header class="site-header">
-  <div class="nav-brand-bar">
-    <a class="brand" href="/" aria-label="Stellar TimeLock home">
-      <img src="/assets/logo.png" alt="" class="brand-logo" />
-      <span class="brand-name">Stellar TimeLock</span>
-    </a>
-  </div>
-  <div class="nav-links-bar">
-    <nav class="nav-links" aria-label="Primary">
-      <a href="#features">Features</a>
-      <a href="#security">Security</a>
-      <a href="#faq">FAQ</a>
-      <a
-        href="https://github.com/StellarTimeLock/StellarTimeLock-web"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="nav-link-github"
-      >
-        <svg
-          class="nav-link-github-icon"
-          viewBox="0 0 24 24"
-          width="14"
-          height="14"
-          aria-hidden="true"
-          focusable="false"
-        >
-          <path
-            fill="currentColor"
-            d="M12 .5C5.65.5.5 5.65.5 12a11.5 11.5 0 0 0 7.86 10.92c.58.1.79-.25.79-.56v-2.16c-3.2.7-3.88-1.36-3.88-1.36-.53-1.34-1.29-1.7-1.29-1.7-1.06-.72.08-.7.08-.7 1.17.08 1.79 1.2 1.79 1.2 1.04 1.78 2.72 1.27 3.38.97.11-.75.41-1.27.75-1.56-2.55-.29-5.24-1.28-5.24-5.68 0-1.25.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.21-1.49 3.18-1.18 3.18-1.18.63 1.59.23 2.76.11 3.05.74.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.39-5.25 5.67.42.36.79 1.07.79 2.16v3.2c0 .31.21.67.8.56A11.5 11.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5z"
-          />
-        </svg>
-        GitHub
-      </a>
-    </nav>
-  </div>
-</header>
+<!-- Constellation dot field -->
+<div class="stars" aria-hidden="true"></div>
 
 <main>
+  <!-- ================= HERO ================= -->
+  <section class="hero" id="top">
+    <div class="orbits" aria-hidden="true">
+      <div class="orbit"></div>
+      <div class="orbit"></div>
+      <div class="orbit"></div>
+    </div>
 
-  <!-- ============== HERO ============== -->
-  <section class="hero">
-    <img src="/assets/logo.png" alt="Stellar TimeLock hourglass logo" class="hero-logo" />
-    <h1 class="title">
-      <span id="typed-title" aria-live="polite">Stellar TimeLock</span><span class="cursor" id="cursor">▋</span>
-    </h1>
-    <p class="tagline" id="tagline">Productivity first. Custody your own way.</p>
+    <div class="hero-content">
+      <h1 class="wordmark">StellarOS</h1>
+      <p class="tagline">Your productivity, encrypted.</p>
+      <p class="subtext">
+        A private productivity suite that keeps your work on your device —
+        notes, passwords, documents, and scheduling, protected by design.
+      </p>
 
-    <p class="lede">
-      <strong>Free on Google Play.</strong> Non-custodial vaults, encrypted notes, a bill calendar,
-      a profit-and-loss ledger, a built-in authenticator, and non-custodial swaps — all in one app.
-      <br /><strong>No subscriptions. No ads. No data selling. Your keys, your device, never our servers.</strong>
-    </p>
+      <div class="hero-cta">
+        <a href="#" class="btn">Get Started</a>
+      </div>
+    </div>
 
-    <div class="cta-row">
-      <a class="cta cta-primary" href="https://play.google.com/store/apps/details?id=com.stellartimelock.app" rel="noopener">
-        <svg class="cta-store-icon" viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-          <path fill="currentColor" d="M3.6 1.2L1.2 4.8v14.4l2.4 3.6 12-10.8L3.6 1.2zM17.3 12L4.1 22.2l-.5-.3 12-9.9zM3.6 22.8l12-10.8L4.2 1.4l-.6.4 12 10.2zM21.6 12l-3.2-2.1-3.5 2.1 3.5 2.1 3.2-2.1zM14.5 10.5L21 6.3 14.5 2.1l-3.5 2.1 3.5 2.1z"/>
-        </svg>
-        Get it on Google Play — Free
-      </a>
-      <a class="cta cta-ghost" href="https://github.com/StellarTimeLock/StellarTimeLock-web" target="_blank" rel="noopener noreferrer">
-        Audit the source →
-      </a>
+    <div class="scroll-hint" aria-hidden="true"></div>
+  </section>
+
+  <!-- ================= FEATURES ================= -->
+  <section class="features section" id="features">
+    <div class="container">
+      <div class="section-header">
+        <span class="kicker">The Suite</span>
+        <h2>Everything you need. Nothing you don't.</h2>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card">
+          <div class="feature-mark" aria-hidden="true">
+            <span class="mark-note"></span>
+          </div>
+          <h3>Encrypted Notes</h3>
+          <p>Capture thoughts in plain text or rich notes, sealed with device-level encryption.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-mark" aria-hidden="true">
+            <span class="mark-vault"></span>
+          </div>
+          <h3>Password Vault</h3>
+          <p>Store credentials in a vault that never leaves your device and never asks for your master key.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-mark" aria-hidden="true">
+            <span class="mark-doc"></span>
+          </div>
+          <h3>Document Editor</h3>
+          <p>A focused editor for long-form writing, formatted cleanly without clutter.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="feature-mark" aria-hidden="true">
+            <span class="mark-calendar"></span>
+          </div>
+          <h3>Secure Calendar</h3>
+          <p>Plan your time with an agenda that respects your privacy — no data leaves your device.</p>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ============== FEATURES ============== -->
-  <section id="features" class="features">
-    <h2 class="section-title">Productivity, first.</h2>
-    <p class="section-lede">
-      Everything you'd expect from a modern encrypted notebook — and a Stellar wallet ready when you want it.
-      <br /><strong>All free. No catch.</strong>
-    </p>
-    <ul class="feature-grid">
-      <li class="feature">
-        <div class="feature-icon">🔐</div>
-        <h3>Encrypted notes & documents</h3>
-        <p>AES-256 sealed on device before it touches storage. Passport scans, seed backups, recovery phrases, tasks, shopping lists — all in one encrypted notebook.</p>
-      </li>
-      <li class="feature">
-        <div class="feature-icon">📅</div>
-        <h3>Bill calendar</h3>
-        <p>Full-month calendar view with color-coded due-date dots. Tap a day to see what's due, add a bill on the spot, and get local reminders 24 hours before.</p>
-      </li>
-      <li class="feature">
-        <div class="feature-icon">📊</div>
-        <h3>P&L ledger</h3>
-        <p>Track income vs expense with auto-balancing rollups. Tag by category, bulk-import from CSV or TSV, and watch your net position in real time.</p>
-      </li>
-      <li class="feature">
-        <div class="feature-icon">🔑</div>
-        <h3>Built-in authenticator</h3>
-        <p>RFC 6238 TOTP codes for your existing accounts. Biometric-gated, encrypted alongside your notes, and Google Authenticator-compatible export.</p>
-      </li>
-      <li class="feature">
-        <div class="feature-icon">🧮</div>
-        <h3>Calculator on the home tab</h3>
-        <p>A functional 4-function calculator embedded on the productivity landing so you can split a bill or double-check a swap rate without leaving the app.</p>
-      </li>
-      <li class="feature">
-        <div class="feature-icon">☁</div>
-        <h3>Google Drive backup</h3>
-        <p>Envelope-encrypted backup + restore of your entire encrypted vault. The cloud sees ciphertext only. One-tap restore on a new device.</p>
-      </li>
-    </ul>
-
-    <h2 class="section-title section-title-secondary">Wallet, when you want it.</h2>
-    <p class="section-lede">
-      Opt in during onboarding — or skip entirely and use the app as a pure productivity workspace.
-    </p>
-    <ul class="feature-grid">
-      <li class="feature">
-        <div class="feature-icon">⚙</div>
-        <h3>Memo protection</h3>
-        <p>Address-book aware send flow. If a destination is flagged as an exchange or casino, the wallet refuses to sign without a required memo. No more permanently lost XLM.</p>
-      </li>
-      <li class="feature">
-        <div class="feature-icon">⏳</div>
-        <h3>Time-lock vaults on Soroban</h3>
-        <p>Lock XLM until any future date up to 1,000 days out. Enforced by a Soroban smart contract on Stellar mainnet — no admin key, no emergency exit, no early withdrawal. What you lock stays locked.</p>
-      </li>
-      <li class="feature">
-        <div class="feature-icon">🔄</div>
-        <h3>Instant swaps</h3>
-        <p>Non-custodial. No accounts, no KYC, and the wallet never touches your seed to complete a swap — you sign locally.</p>
-      </li>
-    </ul>
-  </section>
-
-  <!-- ============== SECURITY ============== -->
-  <section id="security" class="security security-bar">
-    <div class="security-inner">
-      <div class="security-header">
-        <span class="security-eyebrow">SECURITY</span>
-        <h2 class="section-title security-title">Security you can inspect</h2>
-        <p class="security-copy">
-          The cryptography that protects your seed is open source under Apache 2.0.
-          The full threat model + subsystem writeup lives in the public repo.
-          Read it. Audit it. File a PR.
+  <!-- ================= PRIVACY ================= -->
+  <section class="privacy section" id="privacy">
+    <div class="container">
+      <div class="privacy-frame">
+        <h2>Private by architecture.</h2>
+        <p>
+          StellarOS is built around a simple principle: your work belongs to you.
+          Everything is encrypted and processed on your device. There is no cloud,
+          no account, and no tracking.
         </p>
-      </div>
-      <ul class="security-list">
-        <li>Android Keystore / iOS Keychain binds every seed to hardware</li>
-        <li>One biometric prompt per session cache</li>
-        <li>Best-effort memory zeroing after every signing + KDF call</li>
-        <li><code>allowBackup="false"</code> on Android — no accidental cloud copies</li>
-        <li>AES-256-CBC + HMAC-SHA256 (encrypt-then-MAC) for on-device notebook data</li>
-        <li>No server-side custody, ever. Backend never sees a seed.</li>
-      </ul>
-      <a class="cta cta-primary security-cta" href="https://github.com/StellarTimeLock/StellarTimeLock-web" target="_blank" rel="noopener noreferrer">
-        Read the source →
-      </a>
-    </div>
-  </section>
-
-  <!-- ============== CONTRACT ============== -->
-  <section id="contract" class="contract-callout">
-    <div class="contract-inner">
-      <span class="contract-eyebrow">ON-CHAIN</span>
-      <h2 class="section-title contract-title">Verifiable Soroban contract</h2>
-      <p class="contract-copy">
-        The time-lock vault primitive is a public Soroban smart contract deployed on Stellar mainnet.
-        No proxy, no upgrade key, no owner. Inspect the bytecode and history on any Stellar mainnet explorer.
-      </p>
-      <div class="contract-address" role="text">
-        <code>CCWDMIPD4ZTTIV5LR53PD325MS6VRGF3WJEJRKNCIKK3G7H6AXJ3UE4F</code>
-
-        <br><br>
-<strong>Multi-Asset Vault:</strong><br>
-<code>CBKOYL6BHVCHB4DJFVNHLGJKLCIFVRRRDVN2NRWX6TKRHQJQZQHPCACV</code>
-      </div>
-      <div class="contract-actions">
-        <a class="cta cta-ghost"
-           href="https://stellar.expert/explorer/public/contract/CCWDMIPD4ZTTIV5LR53PD325MS6VRGF3WJEJRKNCIKK3G7H6AXJ3UE4F"
-           target="_blank"
-           rel="noopener noreferrer">
-          View on stellar.expert →
-        </a>
-        <a class="cta cta-ghost"
-           href="https://github.com/StellarTimeLock/StellarTimeLock-web"
-           target="_blank"
-           rel="noopener noreferrer">
-          Read the Rust source →
-        </a>
+        <div class="privacy-points">
+          <span>On-device encryption</span>
+          <span>No cloud</span>
+          <span>No tracking</span>
+        </div>
       </div>
     </div>
   </section>
-
-  <!-- ============== FAQ ============== -->
-  <section id="faq" class="faq">
-    <div class="faq-inner">
-      <h2 class="section-title faq-title">Frequently asked questions</h2>
-
-      <details class="faq-item">
-        <summary>
-          <span>Is Stellar TimeLock a non-custodial wallet?</span>
-          <span class="faq-chev" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-body">
-          <p>
-            Yes. Your seed phrase and all encrypted notebook data live only on your device,
-            protected by the Android Keystore or iOS Keychain. Our backend infrastructure never sees your
-            keys, your ciphertext, or any personally identifiable information about your
-            wallet activity.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>
-          <span>How do time-locked savings vaults work?</span>
-          <span class="faq-chev" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-body">
-          <p>
-            Each vault is a call to our public Soroban smart contract on Stellar mainnet.
-            You deposit XLM and choose an unlock date up to 1,000 days in the future.
-            Once created, no one — not even Stellar TimeLock — can withdraw before that
-            date. There is no admin key, no emergency exit, and no upgrade path.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>
-          <span>What is memo protection?</span>
-          <span class="faq-chev" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-body">
-          <p>
-            Exchanges and custodial platforms require a numeric or text memo to credit
-            your deposit. If you paste a destination that our address book flags as an
-            exchange or a casino, the wallet refuses to sign the transaction until you add
-            a memo. This blocks the single most common cause of permanently lost Stellar
-            Lumens.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>
-          <span>Do I have to use the crypto features?</span>
-          <span class="faq-chev" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-body">
-          <p>
-            No. During onboarding you can pick a productivity-only mode that hides the
-            Crypto tab entirely. You still get the encrypted notes, bill calendar, P&L
-            ledger, and built-in authenticator, and you never see a Stellar address unless
-            you opt in later from Settings.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>
-          <span>What encryption does the notebook use?</span>
-          <span class="faq-chev" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-body">
-          <p>
-            Notebook data uses PBKDF2 to stretch your wallet-derived material, HKDF-SHA-256
-            to split subsystem keys, and AES-256-CBC for encryption. Every note, bill,
-            ledger entry, and authenticator secret is sealed before it hits AsyncStorage.
-            Even the Google Drive backup blob is ciphertext — the cloud sees an opaque
-            envelope, never plaintext.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>
-          <span>Is Stellar TimeLock really free?</span>
-          <span class="faq-chev" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-body">
-          <p>
-            Yes. All wallet features — send, receive, swap, and time-lock vaults — are
-            free forever. Revenue comes from optional cross-chain swap partner fees when you
-            use the built-in swap feature. No subscriptions, no ads, no data selling.
-          </p>
-        </div>
-      </details>
-
-      <details class="faq-item">
-        <summary>
-          <span>Where can I audit the code?</span>
-          <span class="faq-chev" aria-hidden="true">+</span>
-        </summary>
-        <div class="faq-body">
-          <p>
-            The client-side cryptography and the Soroban vault contract are both public
-            under Apache 2.0 in the
-            <a href="https://github.com/StellarTimeLock/StellarTimeLock-web"
-               target="_blank"
-               rel="noopener noreferrer">StellarTimeLock-web</a>
-            repository. Issues, pull requests, and responsible disclosures are welcome.
-          </p>
-        </div>
-      </details>
-    </div>
-  </section>
-
-  <!-- ============== FREE FOREVER (pricing) — last content section before footer ============== -->
-  <section id="pricing" class="pricing">
-    <div class="pricing-inner">
-      <span class="pricing-eyebrow">PRICING</span>
-      <h2 class="section-title pricing-title">100% Free. No Strings.</h2>
-      <p class="pricing-lede">
-        Every feature ships free on Google Play. Non-custodial vaults, the full productivity suite,
-        encrypted notebook, bill calendar, P&L ledger, TOTP authenticator, and non-custodial swaps —
-        all included, forever. Revenue comes from optional swap partner fees when you trade;
-        never from your data or attention.
-      </p>
-      <ul class="pricing-list">
-        <li>
-          <span class="pricing-check">✓</span>
-          <span>Unlimited time-lock vaults</span>
-        </li>
-        <li>
-          <span class="pricing-check">✓</span>
-          <span>Encrypted notes, bills & ledger</span>
-        </li>
-        <li>
-          <span class="pricing-check">✓</span>
-          <span>Built-in TOTP authenticator</span>
-        </li>
-        <li>
-          <span class="pricing-check">✓</span>
-          <span>Google Drive backup & restore</span>
-        </li>
-        <li>
-          <span class="pricing-check">✓</span>
-          <span>Non-custodial cross-chain swaps</span>
-        </li>
-        <li>
-          <span class="pricing-check">✓</span>
-          <span>No ads, no tracking, no subscriptions</span>
-        </li>
-      </ul>
-      <a class="cta cta-primary pricing-cta" href="https://play.google.com/store/apps/details?id=com.stellartimelock.app" rel="noopener">
-        Get it free on Google Play →
-      </a>
-    </div>
-  </section>
-
-  <!-- ============== BANNERS ============== -->
-  <div class="banners">
-    <div class="security-banner">
-      <svg class="security-banner-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-        <path fill="currentColor" d="M12 2L1 21h22L12 2zm1 16h-2v-2h2v2zm0-4h-2v-4h2v4z"/>
-      </svg>
-      <p class="security-banner-text">
-        <strong class="security-banner-title">⚠️ SECURITY NOTICE: </strong>
-        This is an informational landing page for our upcoming mobile app. 
-        We will NEVER ask for your secret key or recovery phrase on this website. 
-        The Stellar TimeLock mobile app stores keys locally on your device only.
-      </p>
-    </div>
-
-    <div class="authenticity-banner">
-      <svg class="authenticity-banner-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true">
-        <path fill="currentColor" d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
-      </svg>
-      <div class="authenticity-content">
-        <p class="authenticity-title">Verify Our Authenticity:</p>
-        <p class="authenticity-item">✅ Google Play Store listing Coming Soon!</p>
-        <p class="authenticity-item">✅ GitHub: github.com/stellartimelock/StellarTimeLock-web</p>
-        <p class="authenticity-item">✅ Official Domain: stellartimelock.com</p>
-        <p class="authenticity-item">✅ LLC Registered: Stellar TimeLock LLC, Ohio</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- ============== FOOTER ============== -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <a class="footer-badge" href="https://smollaunch.com" target="_blank" rel="noopener noreferrer" aria-label="Featured on Smol Launch">
-        <img src="https://smollaunch.com/badges/featured-dark.svg" alt="Featured on Smol Launch" width="200" height="40" />
-      </a>
-
-      <nav class="footer-social" aria-label="Social">
-        <a class="footer-link-btn" href="https://github.com/StellarTimeLock/StellarTimeLock-web" target="_blank" rel="noopener noreferrer">GitHub</a>
-        <a class="footer-link-btn" href="https://twitter.com/stellartimelock" target="_blank" rel="noopener noreferrer">Twitter/X</a>
-        <a class="footer-link-btn" href="mailto:stellartimelock@gmail.com">Email</a>
-      </nav>
-
-      <nav class="footer-legal-links" aria-label="Legal">
-        <a class="footer-link-btn" href="/privacy">Privacy Policy</a>
-        <a class="footer-link-btn" href="/terms">Terms of Use</a>
-        <a class="footer-link-btn" href="/disclosures">Disclosures</a>
-      </nav>
-
-      <p class="footer-tagline">Stellar TimeLock — Time-Locked Assets. Secure Release.</p>
-
-      <p class="footer-copyright">
-        &copy; 2026 Stellar TimeLock LLC. &ldquo;Stellar&rdquo; is a trademark of the Stellar Development Foundation. This project is not affiliated with SDF.
-      </p>
-    </div>
-  </footer>
-
 </main>
 
-<script src="/assets/main.js" defer></script>
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-mark"><i></i>StellarOS</div>
+      <div class="footer-copy">&copy; 2026 StellarOS. All rights reserved.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Minimal: enable smooth scrolling for any in-page anchors.
+  document.querySelectorAll('a[href^="#"]').forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      var target = document.querySelector(link.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+      }
+    });
+  });
+</script>
+
 </body>
 </html>
