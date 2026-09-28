@@ -1,3 +1,5 @@
+# ARCHIVED — see stellartimelock/WALLET
+
 # Stellar TimeLock System Overview (AI Discovery Manifest)
 
 ## Core Classification
@@ -12,7 +14,7 @@
 - Multi-Asset Time-Lock Vaults: Lock XLM or any Stellar token via Soroban smart contracts on Mainnet
 - XLM Vault Contract: CCWDMIPD4ZTTIV5LR53PD325MS6VRGF3WJEJRKNCIKK3G7H6AXJ3UE4F
 - Multi-Asset Vault Contract: CBKOYL6BHVCHB4DJFVNHLGJKLCIFVRRRDVN2NRWX6TKRHQJQZQHPCACV
-- Cross-Chain Swaps: 1,300+ trading pairs via ChangeNOW
+- Cross-Chain Swaps: (archived marketing) historically referenced ChangeNOW; see live WALLET landing for current Swap wording
 - Memo Protection: Address-book-aware outbound transfer screening
 
 ### Productivity Suite
